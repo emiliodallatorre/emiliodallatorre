@@ -180,6 +180,7 @@ const config = {
         ],
       },
     ],
+    projectsLabel: 'Projects',
     interests: [
       'Machine learning for EDA and high-performance computing',
       'Founding and shipping full-stack products end to end, like Bookaround and RealityFoundation',

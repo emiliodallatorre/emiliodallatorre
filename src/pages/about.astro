@@ -20,6 +20,7 @@ const careerLabel = config.about.careerLabel;
 const careerItems = config.about.career;
 const educationLabel = config.about.educationLabel;
 const educationItems = config.about.education;
+const projectsLabel = config.about.projectsLabel;
 const focusItems = config.about.interests;
 const interestsLabel = config.about.interestsLabel;
 const interestsHeading = config.about.interestsHeading;
@@ -190,6 +191,14 @@ const profileLinks = [
       </div>
     </section>
 
+    <section class="about-section" aria-label={projectsLabel}>
+      <p class="section-label">{projectsLabel}</p>
+      <div class="profile-cards">
+        <RealityFoundationCard />
+        <BookaroundCard />
+      </div>
+    </section>
+
     <section class="about-section" aria-labelledby="about-focus">
       <p class="section-label">{interestsLabel}</p>
       <div>
@@ -197,10 +206,6 @@ const profileLinks = [
         <ul class="focus-list">
           {focusItems.map((item) => <li>{item}</li>)}
         </ul>
-        <div class="profile-cards">
-          <RealityFoundationCard />
-          <BookaroundCard />
-        </div>
       </div>
     </section>
   </main>
