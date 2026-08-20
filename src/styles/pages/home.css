@@ -8,7 +8,8 @@
 
 .hero,
 .featured-section,
-.posts-section {
+.posts-section,
+.rf-feature {
   max-width: var(--max-width-content);
 }
 
