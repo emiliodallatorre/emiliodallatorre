@@ -333,6 +333,88 @@
   background: linear-gradient(135deg, var(--fill-secondary) 0%, var(--fill-tertiary) 100%);
 }
 
+/* ── RealityFoundation feature (full-bleed, brand pink) ───── */
+.rf-feature {
+  --rf-pink: #d90368;
+
+  margin-top: var(--space-16);
+}
+
+.rf-feature-link {
+  display: block;
+  padding: var(--space-10) var(--space-8);
+  border-radius: var(--radius-2xl);
+  background: var(--rf-pink);
+  color: #fff;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.rf-feature-link:hover,
+.rf-feature-link:focus-visible {
+  opacity: 0.92;
+}
+
+.rf-feature-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.rf-feature-logo-wrap {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: var(--space-2);
+  border-radius: var(--radius-full);
+  background: #fff;
+}
+
+.rf-feature-logo {
+  display: block;
+  border-radius: var(--radius-full);
+}
+
+.rf-feature-name {
+  font-size: var(--text-title-2);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.rf-feature-cta {
+  margin-left: auto;
+  font-size: var(--text-footnote);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.rf-feature-desc {
+  max-width: 52ch;
+  margin: var(--space-6) 0 0;
+  color: #fff;
+  font-size: var(--text-callout);
+  line-height: var(--leading-relaxed);
+  opacity: 0.92;
+}
+
+.rf-feature-stats {
+  display: flex;
+  gap: var(--space-10);
+  margin: var(--space-8) 0 0;
+}
+
+.rf-feature-stats dd {
+  margin: 0;
+  font-size: var(--text-title-1);
+  font-weight: var(--weight-semibold);
+}
+
+.rf-feature-stats dt {
+  margin: 0;
+  font-size: var(--text-caption-1);
+  opacity: 0.8;
+}
+
 @keyframes media-placeholder-sweep {
   from {
     transform: translateX(-42%);
@@ -401,6 +483,23 @@
 
   .featured-title {
     font-size: 1.5rem;
+  }
+
+  .rf-feature-link {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .rf-feature-header {
+    flex-wrap: wrap;
+  }
+
+  .rf-feature-cta {
+    margin-left: 0;
+  }
+
+  .rf-feature-stats {
+    flex-wrap: wrap;
+    gap: var(--space-6);
   }
 }
 

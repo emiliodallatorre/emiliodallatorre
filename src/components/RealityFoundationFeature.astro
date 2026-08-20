@@ -1,0 +1,48 @@
+---
+const stats = [
+  { value: '2025', label: 'Founded' },
+  { value: '50k', label: 'Images processed' },
+  { value: '3', label: 'Founding members' },
+];
+---
+
+<section class="rf-feature">
+  <a class="rf-feature-link" href="https://realityfoundation.eu" target="_blank" rel="noopener">
+    <div class="rf-feature-header">
+      <span class="rf-feature-logo-wrap">
+        <img
+          class="rf-feature-logo"
+          src="https://realityfoundation.eu/logo.png"
+          width="56"
+          height="56"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        />
+      </span>
+      <span class="rf-feature-name">RealityFoundation</span>
+      <span class="rf-feature-cta" aria-hidden="true">
+        Visit realityfoundation.eu →
+      </span>
+    </div>
+
+    <p class="rf-feature-desc">
+      RealityFoundation is a tech nonprofit building the infrastructure to certify and verify
+      the origin of digital content. As AI makes it effortless to produce convincing images,
+      video, and documents, knowing what is real has become one of the defining challenges of
+      our era
+    </p>
+
+    <dl class="rf-feature-stats">
+      {
+        stats.map((stat) => (
+          <div>
+            <dd>{stat.value}</dd>
+            <dt>{stat.label}</dt>
+          </div>
+        ))
+      }
+    </dl>
+  </a>
+</section>

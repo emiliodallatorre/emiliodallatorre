@@ -3,6 +3,7 @@ import '../styles/pages/home.css';
 import { Image, getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import FeaturedPostGrid from '../components/FeaturedPostGrid.astro';
+import RealityFoundationFeature from '../components/RealityFoundationFeature.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { DATE_LOCALE, SITE_TITLE, SITE_DESCRIPTION } from '../consts';
@@ -155,5 +156,7 @@ const featuredPlaceholderStyle = featuredPlaceholder
         </section>
       )
     }
+
+    <RealityFoundationFeature />
   </main>
 </BaseLayout>
