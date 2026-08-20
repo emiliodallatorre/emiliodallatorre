@@ -338,10 +338,21 @@
   --rf-pink: #d90368;
 
   margin-top: var(--space-16);
+}
+
+.rf-feature-link {
+  display: block;
   padding: var(--space-10) var(--space-8);
   border-radius: var(--radius-2xl);
   background: var(--rf-pink);
   color: #fff;
+  text-decoration: none;
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.rf-feature-link:hover,
+.rf-feature-link:focus-visible {
+  transform: translateY(-2px);
 }
 
 .rf-feature-body {
@@ -355,17 +366,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.rf-feature-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.rf-feature-logo {
-  display: block;
-  flex-shrink: 0;
 }
 
 .rf-feature-name {
@@ -403,26 +403,6 @@
   opacity: 0.8;
 }
 
-.rf-feature-cta {
-  margin-top: var(--space-8);
-  padding: var(--space-3) var(--space-5);
-  border: 1px solid rgb(255 255 255 / 40%);
-  border-radius: var(--radius-full);
-  color: #fff;
-  font-size: var(--text-footnote);
-  font-weight: var(--weight-medium);
-  white-space: nowrap;
-  transition:
-    background var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out);
-}
-
-.rf-feature-cta:hover,
-.rf-feature-cta:focus-visible {
-  border-color: rgb(255 255 255 / 80%);
-  background: rgb(255 255 255 / 12%);
-}
-
 .rf-feature-figure {
   margin: 0;
 }
@@ -433,11 +413,6 @@
   height: auto;
   border-radius: var(--radius-xl);
   box-shadow: 0 24px 48px -24px rgb(0 0 0 / 45%);
-  transition: transform var(--duration-normal) var(--ease-spring);
-}
-
-.rf-feature:hover .rf-feature-image {
-  transform: scale(1.02);
 }
 
 .rf-feature-caption {
@@ -447,17 +422,6 @@
   font-size: var(--text-caption-2);
   line-height: var(--leading-relaxed);
   opacity: 0.75;
-}
-
-.rf-feature-caption a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: currentColor;
-  text-underline-offset: 0.15em;
-}
-
-.rf-feature-caption a:hover {
-  opacity: 0.8;
 }
 
 @keyframes media-placeholder-sweep {
@@ -539,7 +503,7 @@
     font-size: 1.5rem;
   }
 
-  .rf-feature {
+  .rf-feature-link {
     padding: var(--space-6) var(--space-5);
   }
 
