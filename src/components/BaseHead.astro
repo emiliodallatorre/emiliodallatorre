@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+import { AstroSeo } from "@lexingtonthemes/seo";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jarvis",
+  url: "https://example.com/",
+  description:
+    "Independent designer and creative developer based in Amsterdam.",
+};
+---
+
+<AstroSeo
+  title="Jarvis — Independent Designer & Developer"
+  description="Independent designer and creative developer creating identities, websites, and digital products."
+  canonical="https://example.com/"
+  openGraph={{
+    url: "https://example.com/",
+    title: "Jarvis — Independent Designer & Developer",
+    description:
+      "Independent designer and creative developer creating identities, websites, and digital products.",
+    images: [
+      {
+        url: "https://example.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Jarvis portfolio",
+        type: "image/jpeg",
+      },
+    ],
+    site_name: "Jarvis",
+    type: "website",
+    locale: "en_US",
+  }}
+/>
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Jarvis" />
+<meta name="color-scheme" content="light" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap"
+  rel="stylesheet"
+/>

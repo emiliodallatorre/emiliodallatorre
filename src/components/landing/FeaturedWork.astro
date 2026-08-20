@@ -1,0 +1,145 @@
+---
+import Wrapper from "../Wrapper.astro";
+import Text from "../Text.astro";
+
+const features = [
+  {
+    url: "#_",
+    title: "Form Review",
+  },
+  {
+    url: "#_",
+    title: "New Practice",
+  },
+  {
+    url: "#_",
+    title: "Index Journal",
+  },
+  {
+    url: "#_",
+    title: "Grid Systems",
+  },
+  {
+    url: "#_",
+    title: "Object & Type",
+  },
+  {
+    url: "#_",
+    title: "Process Notes",
+  },
+  {
+    url: "#_",
+    title: "The Edit",
+  },
+  {
+    url: "#_",
+    title: "North Magazine",
+  },
+  {
+    url: "#_",
+    title: "Field Report",
+  },
+  {
+    url: "#_",
+    title: "Studio Journal",
+  },
+  {
+    url: "#_",
+    title: "Type Archive",
+  },
+  {
+    url: "#_",
+    title: "Creative Index",
+  },
+  {
+    url: "#_",
+    title: "Modern Matter",
+  },
+  {
+    url: "#_",
+    title: "New Graphic",
+  },
+  {
+    url: "#_",
+    title: "Open Assembly",
+  },
+  {
+    url: "#_",
+    title: "Visual Journal",
+  },
+  {
+    url: "#_",
+    title: "Design Annual",
+  },
+  {
+    url: "#_",
+    title: "Future Archive",
+  },
+  {
+    url: "#_",
+    title: "The Reference",
+  },
+  {
+    url: "#_",
+    title: "Edition No. 8",
+  },
+];
+---
+
+<section class="bg-ink text-paper">
+  <Wrapper class="pt-20 md:pt-32">
+    <div class="flex justify-between">
+      <div>
+        <Text variant="meta" class="text-accent">05</Text>
+        <Text variant="meta" class="mt-1 text-paper/40">Press</Text>
+      </div>
+      <Text variant="meta" class="max-w-32 text-right text-paper/40">
+        Mentions and appearances
+      </Text>
+    </div>
+
+    <Text variant="displayLarge" class="my-20 md:my-28 text-accent">
+      Press.
+    </Text>
+
+    <ul
+      class="grid grid-cols-1 md:grid-cols-2 border-t border-l border-paper"
+      role="list"
+    >
+      {
+        features.map((item, index) => (
+          <li
+            class="border-b border-r border-paper"
+            data-reveal
+            data-reveal-delay={index * 50}
+          >
+            <a
+              href={item.url}
+              class="group flex items-center justify-between gap-4 px-5 py-5 min-h-16 outline-none hover:bg-accent hover:text-ink focus-visible:bg-accent focus-visible:text-ink motion-safe:transition-colors motion-safe:duration-200"
+            >
+              <Text tag="span" variant="meta">
+                {String(index + 1).padStart(2, "0")} · {item.title}
+              </Text>
+              <Text tag="span" variant="meta">↗</Text>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <footer
+      class="mt-20 md:mt-28 py-8 border-t border-paper flex flex-col sm:flex-row sm:justify-between gap-4"
+    >
+      <Text
+        tag="a"
+        variant="meta"
+        href="mailto:hello@jarvis.studio"
+        class="outline-none focus-visible:outline-2 focus-visible:outline-paper focus-visible:outline-offset-2 hover:text-accent"
+        >hello@jarvis.studio</Text
+      >
+      <Text variant="meta">
+        © {new Date().getFullYear()} Jarvis · Amsterdam, NL
+      </Text>
+    </footer>
+  </Wrapper>
+</section>
