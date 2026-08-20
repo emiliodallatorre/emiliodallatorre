@@ -9,39 +9,36 @@ const stats = [
 <section class="bookaround-feature">
   <a class="bookaround-feature-link" href="https://bookaround.app" target="_blank" rel="noopener">
     <div class="bookaround-feature-body">
-      <div class="bookaround-feature-text">
-        <p class="bookaround-feature-name">Bookaround</p>
-
-        <p class="bookaround-feature-desc">
-          Bookaround is a free, open-source marketplace for buying, selling, and exchanging
-          secondhand books — built end to end as a solo project, from the ISBN scanner to the
-          interactive map.
-        </p>
-
-        <dl class="bookaround-feature-stats">
-          {
-            stats.map((stat) => (
-              <div>
-                <dd>{stat.value}</dd>
-                <dt>{stat.label}</dt>
-              </div>
-            ))
-          }
-        </dl>
-      </div>
-
-      <figure class="bookaround-feature-figure">
+      <div class="bookaround-feature-heading">
         <img
-          class="bookaround-feature-image"
+          class="bookaround-feature-logo"
           src="https://bookaround.app/assets/img/ic_launcher_android.png"
-          width="1024"
-          height="1024"
-          alt="Bookaround logo"
+          width="40"
+          height="40"
+          alt=""
           loading="lazy"
           decoding="async"
           referrerpolicy="no-referrer"
         />
-      </figure>
+        <p class="bookaround-feature-name">Bookaround</p>
+      </div>
+
+      <p class="bookaround-feature-desc">
+        Bookaround is a free, open-source marketplace for buying, selling, and exchanging
+        secondhand books — built end to end as a solo project, from the ISBN scanner to the
+        interactive map.
+      </p>
+
+      <dl class="bookaround-feature-stats">
+        {
+          stats.map((stat) => (
+            <div>
+              <dd>{stat.value}</dd>
+              <dt>{stat.label}</dt>
+            </div>
+          ))
+        }
+      </dl>
     </div>
   </a>
 </section>

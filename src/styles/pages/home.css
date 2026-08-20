@@ -449,16 +449,22 @@
 }
 
 .bookaround-feature-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
-  align-items: center;
-  gap: var(--space-12);
-}
-
-.bookaround-feature-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.bookaround-feature-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.bookaround-feature-logo {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
 }
 
 .bookaround-feature-name {
@@ -496,22 +502,6 @@
   opacity: 0.8;
 }
 
-.bookaround-feature-figure {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
-
-.bookaround-feature-image {
-  display: block;
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  border-radius: var(--radius-xl);
-  box-shadow: 0 24px 48px -24px rgb(0 0 0 / 45%);
-}
-
 @keyframes media-placeholder-sweep {
   from {
     transform: translateX(-42%);
@@ -546,14 +536,6 @@
     order: -1;
   }
 
-  .bookaround-feature-body {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-
-  .bookaround-feature-figure {
-    order: -1;
-  }
 }
 
 @media (max-width: 600px) {
