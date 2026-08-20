@@ -164,6 +164,14 @@
     text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
+.career-bullets a,
+.career-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--label-quaternary, currentcolor);
+  text-underline-offset: 0.15em;
+}
+
 .profile-links a:hover,
 .profile-links a:focus-visible {
   color: var(--label-primary);
@@ -285,14 +293,6 @@
   height: 1px;
   background: var(--color-blue);
   content: '';
-}
-
-.career-bullets a,
-.career-note a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--label-quaternary, currentcolor);
-  text-underline-offset: 0.15em;
 }
 
 .focus-list {
