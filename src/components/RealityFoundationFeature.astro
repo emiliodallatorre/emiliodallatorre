@@ -7,42 +7,67 @@ const stats = [
 ---
 
 <section class="rf-feature">
-  <a class="rf-feature-link" href="https://realityfoundation.eu" target="_blank" rel="noopener">
-    <div class="rf-feature-header">
-      <span class="rf-feature-logo-wrap">
-        <img
-          class="rf-feature-logo"
-          src="https://realityfoundation.eu/logo.png"
-          width="56"
-          height="56"
-          alt=""
-          loading="lazy"
-          decoding="async"
-          referrerpolicy="no-referrer"
-        />
-      </span>
-      <span class="rf-feature-name">RealityFoundation</span>
-      <span class="rf-feature-cta" aria-hidden="true">
-        Visit realityfoundation.eu →
-      </span>
-    </div>
+  <div class="rf-feature-header">
+    <img
+      class="rf-feature-logo"
+      src="https://realityfoundation.eu/logo.png"
+      width="40"
+      height="40"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      referrerpolicy="no-referrer"
+    />
+    <p class="rf-feature-name">RealityFoundation</p>
+    <a
+      class="rf-feature-cta"
+      href="https://realityfoundation.eu"
+      target="_blank"
+      rel="noopener"
+    >
+      Visit realityfoundation.eu →
+    </a>
+  </div>
 
-    <p class="rf-feature-desc">
-      RealityFoundation is a tech nonprofit building the infrastructure to certify and verify
-      the origin of digital content. As AI makes it effortless to produce convincing images,
-      video, and documents, knowing what is real has become one of the defining challenges of
-      our era
-    </p>
+  <p class="rf-feature-desc">
+    RealityFoundation is a tech nonprofit building the infrastructure to certify and verify
+    the origin of digital content. As AI makes it effortless to produce convincing images,
+    video, and documents, knowing what is real has become one of the defining challenges of
+    our era
+  </p>
 
-    <dl class="rf-feature-stats">
-      {
-        stats.map((stat) => (
-          <div>
-            <dd>{stat.value}</dd>
-            <dt>{stat.label}</dt>
-          </div>
-        ))
-      }
-    </dl>
-  </a>
+  <figure class="rf-feature-figure">
+    <img
+      class="rf-feature-image"
+      src="https://realityfoundation.eu/Iran_war_AIfake.png"
+      width="1282"
+      height="700"
+      alt="Side-by-side comparison of a real photograph and an AI-generated image purporting to document the same event"
+      loading="lazy"
+      decoding="async"
+      referrerpolicy="no-referrer"
+    />
+    <figcaption class="rf-feature-caption">
+      After the outbreak of the 2026 Iran war, entirely AI-generated images and videos of
+      airstrikes circulated online, depicting events that never actually occurred —
+      <a
+        href="https://www.ft.com/content/0badb6c5-bce2-4948-9d3b-164bdb55ecf4?syn-25a6b1a6=1"
+        target="_blank"
+        rel="noopener"
+      >
+        source: Financial Times
+      </a>
+    </figcaption>
+  </figure>
+
+  <dl class="rf-feature-stats">
+    {
+      stats.map((stat) => (
+        <div>
+          <dd>{stat.value}</dd>
+          <dt>{stat.label}</dt>
+        </div>
+      ))
+    }
+  </dl>
 </section>

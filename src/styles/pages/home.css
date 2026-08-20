@@ -338,21 +338,10 @@
   --rf-pink: #d90368;
 
   margin-top: var(--space-16);
-}
-
-.rf-feature-link {
-  display: block;
   padding: var(--space-10) var(--space-8);
   border-radius: var(--radius-2xl);
   background: var(--rf-pink);
   color: #fff;
-  text-decoration: none;
-  transition: opacity var(--duration-fast) var(--ease-out);
-}
-
-.rf-feature-link:hover,
-.rf-feature-link:focus-visible {
-  opacity: 0.92;
 }
 
 .rf-feature-header {
@@ -361,20 +350,14 @@
   gap: var(--space-4);
 }
 
-.rf-feature-logo-wrap {
-  display: inline-flex;
-  flex-shrink: 0;
-  padding: var(--space-2);
-  border-radius: var(--radius-full);
-  background: #fff;
-}
-
 .rf-feature-logo {
   display: block;
-  border-radius: var(--radius-full);
+  flex-shrink: 0;
 }
 
 .rf-feature-name {
+  margin: 0;
+  color: #fff;
   font-size: var(--text-title-2);
   font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-tight);
@@ -382,10 +365,17 @@
 
 .rf-feature-cta {
   margin-left: auto;
+  color: #fff;
   font-size: var(--text-footnote);
   font-weight: var(--weight-medium);
   white-space: nowrap;
   opacity: 0.85;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.rf-feature-cta:hover,
+.rf-feature-cta:focus-visible {
+  opacity: 1;
 }
 
 .rf-feature-desc {
@@ -395,6 +385,37 @@
   font-size: var(--text-callout);
   line-height: var(--leading-relaxed);
   opacity: 0.92;
+}
+
+.rf-feature-figure {
+  margin: var(--space-8) 0 0;
+}
+
+.rf-feature-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+
+.rf-feature-caption {
+  max-width: 62ch;
+  margin: var(--space-3) 0 0;
+  color: #fff;
+  font-size: var(--text-caption-1);
+  line-height: var(--leading-relaxed);
+  opacity: 0.8;
+}
+
+.rf-feature-caption a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.15em;
+}
+
+.rf-feature-caption a:hover {
+  opacity: 0.75;
 }
 
 .rf-feature-stats {
@@ -485,7 +506,7 @@
     font-size: 1.5rem;
   }
 
-  .rf-feature-link {
+  .rf-feature {
     padding: var(--space-6) var(--space-5);
   }
 
