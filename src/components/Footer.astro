@@ -11,7 +11,7 @@ const footerLinks = config.footerNav.filter((item) => item.href !== '/');
   <div class="footer-inner">
     <p class="footer-copy">
       &copy; {today.getFullYear()}
-      {footerTitle}.
+      {footerTitle}
     </p>
     {
       footerLinks.length > 0 && (
@@ -38,7 +38,7 @@ const footerLinks = config.footerNav.filter((item) => item.href !== '/');
 }
 
 .footer-inner {
-  max-width: var(--max-width-wide);
+  max-width: calc(var(--max-width-wide) + var(--space-6));
   margin: 0 auto;
   padding: 0 var(--space-6);
   display: flex;

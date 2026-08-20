@@ -26,9 +26,12 @@ const config = {
     defaultOgImage: '/og.png',
   },
 
-  // The logo already links to `/`. Add items here if you want visible header links.
-  // Example: [{ label: 'Posts', href: '/posts' }, { label: 'About', href: '/about' }]
-  nav: [] as NavItem[],
+  // The logo already links to `/`. Visible header links mirror the footer nav below.
+  nav: [
+    { label: 'Posts', href: '/posts' },
+    { label: 'About', href: '/about' },
+    { label: 'Search', href: '/search' },
+  ] as NavItem[],
 
   // Footer links stay visible by default so readers have a stable way to move around.
   footerNav: [
