@@ -497,24 +497,19 @@
 }
 
 .bookaround-feature-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
 }
 
 .bookaround-feature-image {
   display: block;
   width: 100%;
+  max-width: 200px;
   height: auto;
   border-radius: var(--radius-xl);
   box-shadow: 0 24px 48px -24px rgb(0 0 0 / 45%);
-}
-
-.bookaround-feature-caption {
-  max-width: 100%;
-  margin: var(--space-3) 0 0;
-  color: #fff;
-  font-size: var(--text-caption-2);
-  line-height: var(--leading-relaxed);
-  opacity: 0.75;
 }
 
 @keyframes media-placeholder-sweep {
