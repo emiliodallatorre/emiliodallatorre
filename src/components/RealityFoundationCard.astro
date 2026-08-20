@@ -1,0 +1,45 @@
+---
+const stats = [
+  { value: '2025', label: 'Founded' },
+  { value: '50k', label: 'Images processed' },
+  { value: '3', label: 'Founding members' },
+];
+---
+
+<a
+  class="rf-card"
+  href="https://realityfoundation.eu"
+  target="_blank"
+  rel="noopener"
+>
+  <img
+    class="rf-card-logo"
+    src="https://realityfoundation.eu/logo.png"
+    width="72"
+    height="72"
+    alt=""
+    loading="lazy"
+    decoding="async"
+    referrerpolicy="no-referrer"
+  />
+  <div class="rf-card-body">
+    <p class="rf-card-name">RealityFoundation</p>
+    <p class="rf-card-bio">
+      We study the boundaries between authentic and synthetic media — and build
+      the academic infrastructure to defend them
+    </p>
+    <dl class="rf-card-stats">
+      {
+        stats.map((stat) => (
+          <div>
+            <dd>{stat.value}</dd>
+            <dt>{stat.label}</dt>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+  <span class="rf-card-cta" aria-hidden="true">
+    →
+  </span>
+</a>
