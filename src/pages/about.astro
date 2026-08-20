@@ -126,7 +126,9 @@ const profileLinks = [
               <time>{item.period}</time>
               <div>
                 <h3>{item.company}</h3>
-                <p class="career-role">{item.title}</p>
+                <p class="career-role">
+                  {item.subtitle ? `${item.title}, ${item.subtitle}` : item.title}
+                </p>
                 {(item.department || item.location) && (
                   <p class="career-org">
                     {item.department}
@@ -134,7 +136,6 @@ const profileLinks = [
                     {item.location}
                   </p>
                 )}
-                {item.subtitle && <p class="career-subtitle">{item.subtitle}</p>}
                 {item.note && <p class="career-note">{item.note}</p>}
                 <ul class="career-bullets">
                   {item.bullets.map((bullet) => <li>{bullet}</li>)}
@@ -161,9 +162,10 @@ const profileLinks = [
                   {item.institution}
                   {item.school && ` — ${item.school}`}
                 </h3>
-                <p class="career-role">{item.degree}</p>
+                <p class="career-role">
+                  {item.field ? `${item.degree}, ${item.field}` : item.degree}
+                </p>
                 {item.location && <p class="career-org">{item.location}</p>}
-                {item.field && <p class="career-subtitle">{item.field}</p>}
                 {item.thesis && (
                   <p class="career-note">
                     Thesis:{' '}

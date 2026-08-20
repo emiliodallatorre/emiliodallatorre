@@ -250,14 +250,6 @@
   font-weight: 450;
 }
 
-.career-item .career-subtitle {
-  margin: var(--space-1) 0 0;
-  color: var(--label-secondary);
-  font-size: var(--text-callout);
-  font-weight: 450;
-  font-style: italic;
-}
-
 .career-item .career-note {
   max-width: 42rem;
   margin: var(--space-2) 0 0;
