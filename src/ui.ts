@@ -6,8 +6,8 @@ const ui = {
   allPosts: 'All Posts →',
   postsEyebrow: 'Archive',
   postsTitle: 'All Posts',
-  heroTitle: 'Keep notes.',
-  heroTitleLine2: '',
+  heroTitle: 'Machine learning, mostly.',
+  heroTitleLine2: 'Also high-performance computing.',
   viewAll: 'All Posts →',
   readLink: 'Read →',
   postFeed: {
