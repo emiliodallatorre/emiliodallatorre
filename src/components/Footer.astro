@@ -38,7 +38,7 @@ const footerLinks = config.footerNav.filter((item) => item.href !== '/');
 }
 
 .footer-inner {
-  max-width: calc(var(--max-width-wide) + var(--space-6));
+  max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: 0 var(--space-6);
   display: flex;
@@ -81,8 +81,14 @@ const footerLinks = config.footerNav.filter((item) => item.href !== '/');
 }
 
 @media (min-width: 55rem) {
+  .footer-copy {
+    margin-left: calc(-1 * var(--space-4));
+  }
+
   .footer-links {
-    margin-right: calc(var(--max-width-wide) - var(--max-width-content) - var(--space-12));
+    margin-right: calc(
+      var(--max-width-wide) - var(--max-width-content) - var(--space-12) - var(--space-4)
+    );
   }
 }
 
