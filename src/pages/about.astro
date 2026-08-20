@@ -2,8 +2,8 @@
 import '../styles/pages/about.css';
 import config from '../../astro-theme-config';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import GithubCard from '../components/GithubCard.astro';
 import RealityFoundationCard from '../components/RealityFoundationCard.astro';
+import BookaroundCard from '../components/BookaroundCard.astro';
 
 const profileImageUrl = config.about.profileImage.trim();
 const hasProfileImage = profileImageUrl.length > 0;
@@ -23,7 +23,6 @@ const educationItems = config.about.education;
 const focusItems = config.about.interests;
 const interestsLabel = config.about.interestsLabel;
 const interestsHeading = config.about.interestsHeading;
-const githubUsername = config.social.github.replace(/\/+$/, '').split('/').pop();
 const profileLinks = [
   {
     label: 'GitHub',
@@ -199,8 +198,8 @@ const profileLinks = [
           {focusItems.map((item) => <li>{item}</li>)}
         </ul>
         <div class="profile-cards">
-          {githubUsername && <GithubCard username={githubUsername} />}
           <RealityFoundationCard />
+          <BookaroundCard />
         </div>
       </div>
     </section>

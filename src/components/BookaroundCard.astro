@@ -1,0 +1,45 @@
+---
+const stats = [
+  { value: '2021', label: 'Founded' },
+  { value: 'iOS & Android', label: 'Platforms' },
+  { value: 'Open source', label: 'Code' },
+];
+---
+
+<a
+  class="bookaround-card"
+  href="https://bookaround.app"
+  target="_blank"
+  rel="noopener"
+>
+  <img
+    class="bookaround-card-logo"
+    src="https://bookaround.app/assets/img/ic_launcher_android.png"
+    width="72"
+    height="72"
+    alt=""
+    loading="lazy"
+    decoding="async"
+    referrerpolicy="no-referrer"
+  />
+  <div class="bookaround-card-body">
+    <p class="bookaround-card-name">Bookaround</p>
+    <p class="bookaround-card-bio">
+      A free, open-source app for buying, selling, and exchanging secondhand
+      books — with an ISBN scanner and an interactive map
+    </p>
+    <dl class="bookaround-card-stats">
+      {
+        stats.map((stat) => (
+          <div>
+            <dd>{stat.value}</dd>
+            <dt>{stat.label}</dt>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+  <span class="bookaround-card-cta" aria-hidden="true">
+    →
+  </span>
+</a>
