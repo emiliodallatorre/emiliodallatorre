@@ -235,6 +235,66 @@
   line-height: var(--leading-tight);
 }
 
+.career-item .career-org {
+  margin: var(--space-2) 0 0;
+  color: var(--label-tertiary);
+  font-size: var(--text-footnote);
+  font-weight: 450;
+}
+
+.career-item .career-subtitle {
+  margin: var(--space-1) 0 0;
+  color: var(--label-secondary);
+  font-size: var(--text-callout);
+  font-weight: 450;
+  font-style: italic;
+}
+
+.career-item .career-note {
+  max-width: 42rem;
+  margin: var(--space-2) 0 0;
+  color: var(--label-tertiary);
+  font-size: var(--text-footnote);
+  font-weight: 450;
+  line-height: var(--leading-relaxed);
+}
+
+.career-bullets {
+  display: grid;
+  max-width: 42rem;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.career-bullets li {
+  position: relative;
+  padding-left: var(--space-6);
+  color: var(--label-secondary);
+  font-size: var(--text-callout);
+  font-weight: 450;
+  line-height: var(--leading-relaxed);
+}
+
+.career-bullets li::before {
+  position: absolute;
+  top: 0.75em;
+  left: 0;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--color-blue);
+  content: '';
+}
+
+.career-bullets a,
+.career-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--label-quaternary, currentcolor);
+  text-underline-offset: 0.15em;
+}
+
 .focus-list {
   display: grid;
   gap: var(--space-4);

@@ -91,31 +91,93 @@ const config = {
     statementTitle: 'Notes on machine learning and systems that ship.',
     statement:
       'This site collects short write-ups on machine learning, the systems built around it, and a few projects and trips worth remembering. Most of it comes out of work at Qualcomm, PwC, and Accenture, and personal projects like Bookaround and RealityFoundation.',
+    educationLabel: 'Education',
+    education: [
+      {
+        period: 'Sep 2025 – Jul 2027',
+        location: 'Milan, Italy & Stockholm, Sweden',
+        institution: 'Politecnico di Milano & KTH Royal Institute of Technology',
+        school: 'EIT Master School',
+        degree: 'Double Degree Master of Engineering',
+        field: 'High Performance Computing Engineering & ICT Innovation',
+        courses:
+          'Advanced Methods for Scientific Computing, Applied Statistics, Artificial Neural Networks and Deep Learning, Bayesian Learning and Montecarlo Simulation, Advanced Mathematical Models in Finance',
+        achievements: [] as string[],
+      },
+      {
+        period: 'Sep 2020 – Dec 2023',
+        location: 'Venice, Italy',
+        institution: "Ca' Foscari University of Venice",
+        school: 'Department of Molecular Sciences and Nanosystems',
+        degree: 'Bachelor of Engineering',
+        field: 'Engineering Physics',
+        thesis:
+          'Cloud-Deployed Machine Learning for Inversion Time Estimation in Late Gadolinium-Enhanced MRI (in publication, <a href="https://link.springer.com/journal/13244/articles" target="_blank" rel="noopener">Insights into Imaging</a>)',
+        thesisSupervisor: 'Prof. Marco Salvatore Nobile',
+        courses:
+          'Informatics I & II, Calculus I & II, Physics I & II, Quantum Mechanics, Statistics, Business Administration',
+        achievements: [
+          'Developed <a href="https://www.unive.it/pag/16584/?tx_news_pi1[news]=15767" target="_blank" rel="noopener">ML model</a> to predict optimal TI for LGE MRI, deployed on scalable cloud architecture with mobile frontend',
+          'Awarded the role of Subject Matter Expert for INFO/01-A (Informatics) in recognition of the value of the thesis',
+        ],
+      },
+    ],
     careerLabel: 'Career',
     career: [
       {
         period: 'Mar 2026 – Present',
-        title: 'Qualcomm — system on chip machine learning R&D intern',
-        description:
-          'Machine learning for electronic design automation, covering placement and routing, and porting models to Hexagon NPUs.',
+        location: 'Cork, Ireland',
+        company: 'Qualcomm',
+        department: '',
+        title: 'System on Chip Machine Learning Research and Development Intern',
+        subtitle: '',
+        note: 'Supervised by Prof. Andriy Temko, University College Cork',
+        bullets: [
+          'Machine learning for Electronic Design Automation (EDA) with a focus on placement and routing',
+          'Generative AI for macro and mixed-size placement, and reinforcement learning for routing optimization',
+          "Porting of ML models and libraries to Qualcomm's proprietary hardware and software stack, including Hexagon NPUs",
+        ],
       },
       {
         period: 'Oct 2023 – Nov 2025',
-        title: 'PwC — associate, full stack software engineering',
-        description:
-          'Built full-stack document management systems with Java Spring Boot and Flutter, and deployed AI features on Kubernetes across GCP and Azure.',
+        location: 'Milan, Italy',
+        company: 'PwC',
+        department: 'Digital Innovation & Strategy',
+        title: 'Associate',
+        subtitle: 'Full Stack Software Engineering',
+        note: '',
+        bullets: [
+          'Developed full-stack solutions with Java Spring Boot and Flutter for scalable document management systems',
+          'Deployed AI features using Kubernetes on GCP/Azure and led project coordination with clients to meet business objectives',
+          'Achieved top-tier performance, far surpassing expectations, and awarded Impact Tier 1 in Internal Performance Review',
+        ],
       },
       {
         period: 'Apr 2023 – Oct 2023',
-        title: 'Accenture — software analyst',
-        description:
-          'Contributed to core banking software used by major Italian banks, and built ML models on OpenTelemetry data to predict microservice failures.',
+        location: 'Padua, Italy',
+        company: 'Accenture',
+        department: 'Financial Advisory Solutions & Technology',
+        title: 'Software Analyst',
+        subtitle: '',
+        note: '',
+        bullets: [
+          'Contributed to the development and maintenance of core banking software used by major Italian banks',
+          'Built ML models on OpenTelemetry data to predict core microservice failures and improve scaling strategy',
+        ],
       },
       {
         period: 'Sep 2023 – Oct 2024',
-        title: 'Università degli Studi di Milano-Bicocca — undergraduate researcher',
-        description:
-          'Developed ML models to estimate inversion time in LGE MRI, with TensorFlow models optimized for embedded and mobile execution.',
+        location: 'Milan, Italy',
+        company: 'Università degli Studi di Milano-Bicocca',
+        department: '',
+        title: 'Undergraduate Researcher',
+        subtitle: '',
+        note: '',
+        bullets: [
+          'Developed ML models to estimate optimal Inversion Time (TI) in LGE MRI using SHAP values for interpretability and sensitivity analysis in the absence of analytic regression solutions',
+          'Built TensorFlow models optimized for embedded and mobile execution with quantization and pruning for real-time use',
+          'Created Flutter frontend with FastAPI backend and Firebase integration for real-time interaction with deployed ML models',
+        ],
       },
     ],
     interests: [

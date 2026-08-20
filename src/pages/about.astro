@@ -16,6 +16,8 @@ const statementTitle = config.about.statementTitle;
 const statement = config.about.statement;
 const careerLabel = config.about.careerLabel;
 const careerItems = config.about.career;
+const educationLabel = config.about.educationLabel;
+const educationItems = config.about.education;
 const focusItems = config.about.interests;
 const interestsLabel = config.about.interestsLabel;
 const interestsHeading = config.about.interestsHeading;
@@ -115,6 +117,46 @@ const profileLinks = [
       </div>
     </section>
 
+    <section class="about-section" aria-labelledby="about-education">
+      <p class="section-label">{educationLabel}</p>
+      <h2 id="about-education" class="sr-only">
+        {educationLabel}
+      </h2>
+      <div class="career-list">
+        {
+          educationItems.map((item) => (
+            <article class="career-item">
+              <time>{item.period}</time>
+              <div>
+                <h3>{item.degree}</h3>
+                <p class="career-org">
+                  {item.institution}
+                  {item.school && ` — ${item.school}`}
+                  {item.location && ` · ${item.location}`}
+                </p>
+                {item.field && <p class="career-subtitle">{item.field}</p>}
+                {item.thesis && (
+                  <p class="career-note">
+                    Thesis:{' '}
+                    <span set:html={item.thesis} />
+                    {item.thesisSupervisor && ` — ${item.thesisSupervisor}`}
+                  </p>
+                )}
+                {item.courses && <p class="career-note">Courses: {item.courses}</p>}
+                {item.achievements.length > 0 && (
+                  <ul class="career-bullets">
+                    {item.achievements.map((achievement) => (
+                      <li set:html={achievement} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
     <section class="about-section" aria-label={careerLabel}>
       <p class="section-label">{careerLabel}</p>
       <div class="career-list">
@@ -124,7 +166,16 @@ const profileLinks = [
               <time>{item.period}</time>
               <div>
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <p class="career-org">
+                  {item.company}
+                  {item.department && ` — ${item.department}`}
+                  {item.location && ` · ${item.location}`}
+                </p>
+                {item.subtitle && <p class="career-subtitle">{item.subtitle}</p>}
+                {item.note && <p class="career-note">{item.note}</p>}
+                <ul class="career-bullets">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
               </div>
             </article>
           ))
