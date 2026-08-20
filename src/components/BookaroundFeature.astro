@@ -1,0 +1,51 @@
+---
+const stats = [
+  { value: '2021', label: 'Founded' },
+  { value: 'iOS & Android', label: 'Platforms' },
+  { value: 'Open source', label: 'Code' },
+];
+---
+
+<section class="bookaround-feature">
+  <a class="bookaround-feature-link" href="https://bookaround.app" target="_blank" rel="noopener">
+    <div class="bookaround-feature-body">
+      <div class="bookaround-feature-text">
+        <p class="bookaround-feature-name">Bookaround</p>
+
+        <p class="bookaround-feature-desc">
+          Bookaround is a free, open-source marketplace for buying, selling, and exchanging
+          secondhand books — built end to end as a solo project, from the ISBN scanner to the
+          interactive map.
+        </p>
+
+        <dl class="bookaround-feature-stats">
+          {
+            stats.map((stat) => (
+              <div>
+                <dd>{stat.value}</dd>
+                <dt>{stat.label}</dt>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <figure class="bookaround-feature-figure">
+        <img
+          class="bookaround-feature-image"
+          src="https://bookaround.app/assets/img/screenshot-1.png"
+          width="1000"
+          height="2000"
+          alt="Bookaround's interactive map showing nearby book listings with distance, near Venice"
+          loading="lazy"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        />
+        <figcaption class="bookaround-feature-caption">
+          Bookaround's interactive map surfaces nearby listings by distance, so a swap starts as
+          close to home as possible.
+        </figcaption>
+      </figure>
+    </div>
+  </a>
+</section>
