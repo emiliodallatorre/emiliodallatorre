@@ -1,29 +1,26 @@
 {
-  "name": "astro-tone",
-  "description": "Typography-first Astro blog starter with quiet design, built-in search, and publishing defaults.",
+  "name": "emiliodallatorre.it",
+  "description": "Personal portfolio and blog for Emilio Dalla Torre.",
   "type": "module",
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "author": "hanityx",
+  "author": "Emilio Dalla Torre",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanityx/astro-tone.git"
+    "url": "git+https://github.com/emiliodallatorre/emiliodallatorre.git"
   },
   "bugs": {
-    "url": "https://github.com/hanityx/astro-tone/issues"
+    "url": "https://github.com/emiliodallatorre/emiliodallatorre/issues"
   },
-  "homepage": "https://hanityx.github.io/astro-tone/",
+  "homepage": "https://emiliodallatorre.it",
   "keywords": [
     "astro",
-    "withastro",
-    "astro-theme",
-    "astro-starter",
+    "portfolio",
     "blog",
     "markdown",
     "mdx",
-    "pagefind",
-    "typography"
+    "pagefind"
   ],
   "engines": {
     "node": ">=22.12.0"
