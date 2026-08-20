@@ -131,7 +131,7 @@ const config = {
         department: '',
         title: 'System on Chip Machine Learning Research and Development Intern',
         subtitle: '',
-        note: 'Supervised by Prof. Andriy Temko, University College Cork',
+        note: '',
         bullets: [
           'Machine learning for Electronic Design Automation (EDA) with a focus on placement and routing',
           'Generative AI for macro and mixed-size placement, and reinforcement learning for routing optimization',

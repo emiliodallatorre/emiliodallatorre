@@ -117,6 +117,35 @@ const profileLinks = [
       </div>
     </section>
 
+    <section class="about-section" aria-label={careerLabel}>
+      <p class="section-label">{careerLabel}</p>
+      <div class="career-list">
+        {
+          careerItems.map((item) => (
+            <article class="career-item">
+              <time>{item.period}</time>
+              <div>
+                <h3>{item.company}</h3>
+                <p class="career-role">{item.title}</p>
+                {(item.department || item.location) && (
+                  <p class="career-org">
+                    {item.department}
+                    {item.department && item.location && ` · `}
+                    {item.location}
+                  </p>
+                )}
+                {item.subtitle && <p class="career-subtitle">{item.subtitle}</p>}
+                {item.note && <p class="career-note">{item.note}</p>}
+                <ul class="career-bullets">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
     <section class="about-section" aria-labelledby="about-education">
       <p class="section-label">{educationLabel}</p>
       <h2 id="about-education" class="sr-only">
@@ -150,35 +179,6 @@ const profileLinks = [
                     ))}
                   </ul>
                 )}
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="about-section" aria-label={careerLabel}>
-      <p class="section-label">{careerLabel}</p>
-      <div class="career-list">
-        {
-          careerItems.map((item) => (
-            <article class="career-item">
-              <time>{item.period}</time>
-              <div>
-                <h3>{item.company}</h3>
-                <p class="career-role">{item.title}</p>
-                {(item.department || item.location) && (
-                  <p class="career-org">
-                    {item.department}
-                    {item.department && item.location && ` · `}
-                    {item.location}
-                  </p>
-                )}
-                {item.subtitle && <p class="career-subtitle">{item.subtitle}</p>}
-                {item.note && <p class="career-note">{item.note}</p>}
-                <ul class="career-bullets">
-                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
-                </ul>
               </div>
             </article>
           ))
