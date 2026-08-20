@@ -1,6 +1,6 @@
 ---
 title: 'Rewriting Bookaround with Spring Boot and Flutter'
-description: 'Emilio is planning a complete rewrite of his non-profit school book exchange project Bookaround, moving to a Spring Boot backend and Flutter frontend for better scalability and maintainability.'
+description: "I'm planning a complete rewrite of my non-profit school book exchange project Bookaround, moving to a Spring Boot backend and Flutter frontend for better scalability and maintainability."
 pubDate: '2025-10-07'
 heroImage: '../../assets/posts/rewriting-bookaround-with-spring-boot-flutter.jpg'
 category: 'Projects'

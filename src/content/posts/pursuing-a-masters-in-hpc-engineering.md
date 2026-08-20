@@ -1,6 +1,6 @@
 ---
 title: "Pursuing a master's in HPC engineering"
-description: 'Emilio was accepted into the EIT Digital Master School double degree program, studying High Performance Computing Engineering at Politecnico di Milano before continuing at KTH Royal Institute of Technology in Stockholm.'
+description: "I was accepted into the EIT Digital Master School double degree program, studying High Performance Computing Engineering at Politecnico di Milano before continuing at KTH Royal Institute of Technology in Stockholm."
 pubDate: '2025-09-15'
 heroImage: '../../assets/posts/pursuing-a-masters-in-hpc-engineering.png'
 category: 'Career'

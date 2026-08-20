@@ -1,6 +1,6 @@
 ---
 title: 'THAITI project'
-description: 'Emilio joins the development of THAITI, a software project aimed at improving the quality of magnetic resonance imaging through artificial intelligence.'
+description: "I'm taking part in the development of THAITI, a software project aimed at improving the quality of magnetic resonance imaging through artificial intelligence."
 pubDate: '2024-05-29'
 heroImage: '../../assets/posts/thaiti-project.jpg.webp'
 category: 'Projects'

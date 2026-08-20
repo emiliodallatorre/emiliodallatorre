@@ -1,6 +1,6 @@
 ---
 title: 'Revisiting Super SloMo: modernizing video frame interpolation with Apple Metal'
-description: 'Emilio modernized an older Super SloMo implementation with a simplified Bash script, updated dependencies, Apple Metal (MPS) GPU acceleration on macOS, and continuous code quality analysis via CodeScene.'
+description: "I modernized an older Super SloMo implementation with a simplified Bash script, updated dependencies, Apple Metal (MPS) GPU acceleration on macOS, and continuous code quality analysis via CodeScene."
 pubDate: '2025-11-03'
 heroImage: '../../assets/posts/revisiting-super-slomo-modernizing-video-frame-interpolation-with-apple-metal.png'
 category: 'Projects'

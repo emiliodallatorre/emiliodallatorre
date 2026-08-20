@@ -1,6 +1,6 @@
 ---
 title: 'Starting a new chapter in machine learning R&D at Qualcomm'
-description: 'Emilio has joined Qualcomm''s Cork division as a Machine Learning Research & Development Engineer, applying generative AI to VLSI automated design systems.'
+description: "I've joined Qualcomm's Cork division as a Machine Learning Research & Development Engineer, applying generative AI to VLSI automated design systems."
 pubDate: '2026-03-22'
 heroImage: '../../assets/posts/starting-a-new-chapter-in-machine-learning-rd-at-qualcomm.jpg'
 category: 'Career'
