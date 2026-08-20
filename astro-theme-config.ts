@@ -20,7 +20,7 @@ const config = {
     dateLocale: 'en-US',
     title: 'Emilio Dalla Torre',
     logoLabel: 'Emilio Dalla Torre',
-    description: 'Notes on machine learning, systems, and projects worth remembering.',
+    description: 'I do machine learning R&D and high-performance computing, with the odd startup on the side.',
     author: 'Emilio Dalla Torre',
     /** Optional absolute or root-relative image URL for homepage/search/about social previews. */
     defaultOgImage: '/og.png',
@@ -85,12 +85,12 @@ const config = {
     role: 'Machine Learning R&D Engineer at Qualcomm',
     location: 'Cork, Ireland',
     focus: 'Machine learning for EDA, high-performance computing, and full-stack systems.',
-    lead: "Emilio works on machine learning for electronic design automation at Qualcomm, and is completing a double-degree master's in high performance computing engineering between Politecnico di Milano and KTH. He previously built full-stack systems at PwC and Accenture, and founded Bookaround and RealityFoundation.",
+    lead: "I work on machine learning for electronic design automation at Qualcomm, and I'm completing a double-degree master's in high performance computing engineering between Politecnico di Milano and KTH. I previously built full-stack systems at PwC and Accenture, and founded Bookaround and RealityFoundation.",
     headline: ['Machine learning,', 'shipped end to end.'],
     statementLabel: 'Work',
     statementTitle: 'Notes on machine learning and systems that ship.',
     statement:
-      'This site collects short write-ups on machine learning, the systems built around it, and a few projects and trips worth remembering. Most of it comes out of work at Qualcomm, PwC, and Accenture, and personal projects like Bookaround and RealityFoundation.',
+      'I write short pieces on machine learning, the systems I build around it, and a few projects and trips worth remembering. Most of it comes from my work at Qualcomm, PwC, and Accenture, and personal projects like Bookaround and RealityFoundation.',
     educationLabel: 'Education',
     education: [
       {
@@ -186,7 +186,7 @@ const config = {
       'Media provenance and authenticity infrastructure',
     ],
     interestsLabel: 'Interests',
-    interestsHeading: 'What the work keeps returning to',
+    interestsHeading: 'What I keep coming back to',
   },
 };
 
