@@ -4,6 +4,7 @@ description: 'Emilio was accepted into the EIT Digital Master School double degr
 pubDate: '2025-09-15'
 heroImage: '../../assets/posts/pursuing-a-masters-in-hpc-engineering.png'
 category: 'Career'
+homeOrder: 2
 ---
 
 I am pleased to announce my acceptance into the [EIT Digital Master School](https://www.eitdigital.eu) double degree program.
