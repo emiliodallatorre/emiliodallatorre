@@ -23,7 +23,7 @@ const config = {
     description: 'I do machine learning R&D and high-performance computing, with the odd startup on the side.',
     author: 'Emilio Dalla Torre',
     /** Optional absolute or root-relative image URL for homepage/search/about social previews. */
-    defaultOgImage: '/og.png',
+    defaultOgImage: undefined as string | undefined,
   },
 
   // The logo already links to `/`. Visible header links mirror the footer nav below.
