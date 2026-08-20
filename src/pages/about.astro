@@ -128,12 +128,12 @@ const profileLinks = [
             <article class="career-item">
               <time>{item.period}</time>
               <div>
-                <h3>{item.degree}</h3>
-                <p class="career-org">
+                <h3>
                   {item.institution}
                   {item.school && ` — ${item.school}`}
-                  {item.location && ` · ${item.location}`}
-                </p>
+                </h3>
+                <p class="career-role">{item.degree}</p>
+                {item.location && <p class="career-org">{item.location}</p>}
                 {item.field && <p class="career-subtitle">{item.field}</p>}
                 {item.thesis && (
                   <p class="career-note">
@@ -165,12 +165,15 @@ const profileLinks = [
             <article class="career-item">
               <time>{item.period}</time>
               <div>
-                <h3>{item.title}</h3>
-                <p class="career-org">
-                  {item.company}
-                  {item.department && ` — ${item.department}`}
-                  {item.location && ` · ${item.location}`}
-                </p>
+                <h3>{item.company}</h3>
+                <p class="career-role">{item.title}</p>
+                {(item.department || item.location) && (
+                  <p class="career-org">
+                    {item.department}
+                    {item.department && item.location && ` · `}
+                    {item.location}
+                  </p>
+                )}
                 {item.subtitle && <p class="career-subtitle">{item.subtitle}</p>}
                 {item.note && <p class="career-note">{item.note}</p>}
                 <ul class="career-bullets">
