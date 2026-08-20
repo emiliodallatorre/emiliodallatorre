@@ -2,6 +2,7 @@
 import '../styles/pages/about.css';
 import config from '../../astro-theme-config';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GithubCard from '../components/GithubCard.astro';
 
 const profileImageUrl = config.about.profileImage.trim();
 const hasProfileImage = profileImageUrl.length > 0;
@@ -21,6 +22,7 @@ const educationItems = config.about.education;
 const focusItems = config.about.interests;
 const interestsLabel = config.about.interestsLabel;
 const interestsHeading = config.about.interestsHeading;
+const githubUsername = config.social.github.replace(/\/+$/, '').split('/').pop();
 const profileLinks = [
   {
     label: 'GitHub',
@@ -195,6 +197,7 @@ const profileLinks = [
         <ul class="focus-list">
           {focusItems.map((item) => <li>{item}</li>)}
         </ul>
+        {githubUsername && <GithubCard username={githubUsername} />}
       </div>
     </section>
   </main>
