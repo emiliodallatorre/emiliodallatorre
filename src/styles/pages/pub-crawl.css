@@ -87,6 +87,31 @@ body {
   line-height: 1.5;
 }
 
+.crawl-rules {
+  margin: 0 auto 1.25rem;
+  max-width: 30rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--crawl-current-line);
+  border-radius: 12px;
+  background: var(--crawl-current-bg);
+  text-align: center;
+}
+
+.crawl-rules-title {
+  margin: 0 0 0.15rem;
+  color: var(--crawl-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.crawl-rules-text {
+  margin: 0;
+  color: var(--crawl-text);
+  font-size: 0.9rem;
+}
+
 .crawl-status {
   min-height: 1.5rem;
   margin-bottom: 1rem;
