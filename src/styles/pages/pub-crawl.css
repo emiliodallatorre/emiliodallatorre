@@ -91,6 +91,18 @@ body {
   text-align: center;
 }
 
+.crawl-sim-banner {
+  margin: 0 0 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px dashed var(--crawl-warning);
+  border-radius: 8px;
+  background: var(--crawl-current-bg);
+  color: var(--crawl-warning);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 .crawl-status-line {
   margin: 0;
   font-size: 1rem;

@@ -76,9 +76,12 @@ const stops: Stop[] = [
         <h1>One Last Round</h1>
         <p class="crawl-subtitle">
           Emilio &amp; Jérémy are wrapping up at Qualcomm — tonight's pub crawl sends them off.
+          <br />
           Cork, 21 August 2026.
         </p>
       </header>
+
+      <p class="crawl-sim-banner" id="sim-banner" hidden></p>
 
       <section class="crawl-status" id="crawl-status" aria-live="polite">
         <noscript>
@@ -127,15 +130,36 @@ const stops: Stop[] = [
 
       <p class="crawl-footnote">
         Order and times are a first draft — expect this to shift mid-crawl.
+        <br />
         <a href={withBase('/')}>← Back to the actual portfolio</a>
       </p>
     </main>
-
     <script is:inline define:vars={{ stops }}>
       const stopEls = Array.from(document.querySelectorAll('.crawl-stop'));
       const statusEl = document.getElementById('crawl-status');
       const progressTrack = document.getElementById('progress-track');
       const progressFill = document.getElementById('progress-fill');
+      const simBanner = document.getElementById('sim-banner');
+
+      // Preview any moment by visiting this page with ?at=2026-08-21T21:00 —
+      // the clock then runs forward in real time from that point.
+      let simOffsetMs = 0;
+      const atParam = new URLSearchParams(location.search).get('at');
+      if (atParam) {
+        const simulated = new Date(atParam);
+        if (!Number.isNaN(simulated.getTime())) {
+          simOffsetMs = simulated.getTime() - Date.now();
+          simBanner.hidden = false;
+          simBanner.textContent = `⏱ Simulating ${simulated.toLocaleString('en-IE', {
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+          })} onward — drop ?at= from the URL to see the real time.`;
+        }
+      }
+      function getNow() {
+        return new Date(Date.now() + simOffsetMs);
+      }
 
       function formatCountdown(ms) {
         const totalSeconds = Math.max(0, Math.floor(ms / 1000));
@@ -148,7 +172,7 @@ const stops: Stop[] = [
       }
 
       function render() {
-        const now = new Date();
+        const now = getNow();
         const start = new Date(stops[0].start);
         const end = new Date(stops[stops.length - 1].end);
 
