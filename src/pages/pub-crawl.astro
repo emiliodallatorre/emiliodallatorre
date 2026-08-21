@@ -9,9 +9,12 @@ interface Stop {
   end: string;
   timeLabel: string;
   address: string;
+  /** Overrides the generated maps query when a verified link is known. */
+  mapsUrl?: string;
 }
 
-function mapsUrl(stop: Pick<Stop, 'name' | 'address'>) {
+function mapsUrl(stop: Pick<Stop, 'name' | 'address' | 'mapsUrl'>) {
+  if (stop.mapsUrl) return stop.mapsUrl;
   const query = `${stop.name}, ${stop.address}`;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
@@ -49,9 +52,17 @@ const stops: Stop[] = [
   {
     name: 'The Oval',
     start: '2026-08-21T22:30:00',
-    end: '2026-08-21T23:59:00',
-    timeLabel: '10:30 PM – late',
+    end: '2026-08-21T23:45:00',
+    timeLabel: '10:30 – 11:45 PM',
     address: '25 South Main Street, Cork, T12 Y15D, Ireland',
+  },
+  {
+    name: 'Crane Lane',
+    start: '2026-08-21T23:45:00',
+    end: '2026-08-22T02:00:00',
+    timeLabel: '11:45 PM – crash 🛌',
+    address: 'Phoenix Street, Cork, T12 A218, Ireland',
+    mapsUrl: 'https://maps.app.goo.gl/13e9ozAyBzrWpCru9',
   },
 ];
 ---
@@ -75,7 +86,14 @@ const stops: Stop[] = [
         <p class="crawl-eyebrow">🍺 Last day at Qualcomm</p>
         <h1>One Last Round</h1>
         <p class="crawl-subtitle">
-          Emilio &amp; Jérémy are wrapping up at Qualcomm — tonight's pub crawl sends them off.
+          <a href="https://instagram.com/emiliodallatorre" target="_blank" rel="noopener noreferrer"
+            >Emilio</a
+          >
+          &amp;
+          <a href="https://instagram.com/jerem_bgn" target="_blank" rel="noopener noreferrer"
+            >Jérémy</a
+          >
+          are wrapping up at Qualcomm — tonight's pub crawl sends them off.
           <br />
           Cork, 21 August 2026.
         </p>
@@ -133,6 +151,8 @@ const stops: Stop[] = [
         <br />
         <a href={withBase('/')}>← Back to the actual portfolio</a>
       </p>
+
+      <a class="crawl-fab" href="tel:+353874577384">📞 Call if got lost</a>
     </main>
     <script is:inline define:vars={{ stops }}>
       const stopEls = Array.from(document.querySelectorAll('.crawl-stop'));
