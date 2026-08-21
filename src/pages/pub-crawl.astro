@@ -8,6 +8,12 @@ interface Stop {
   start: string;
   end: string;
   timeLabel: string;
+  address: string;
+}
+
+function mapsUrl(stop: Pick<Stop, 'name' | 'address'>) {
+  const query = `${stop.name}, ${stop.address}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
 // Draft order/times — this list will evolve during the night, edit freely.
@@ -17,30 +23,35 @@ const stops: Stop[] = [
     start: '2026-08-21T18:30:00',
     end: '2026-08-21T19:30:00',
     timeLabel: '6:30 – 7:30 PM',
+    address: '3 Union Quay, Cork, T12 XF24, Ireland',
   },
   {
     name: 'The Poor Relation',
     start: '2026-08-21T19:30:00',
     end: '2026-08-21T20:30:00',
     timeLabel: '7:30 – 8:30 PM',
+    address: '19 Parnell Place, Cork, Ireland',
   },
   {
     name: 'Mutton Lane',
     start: '2026-08-21T20:30:00',
     end: '2026-08-21T21:30:00',
     timeLabel: '8:30 – 9:30 PM',
+    address: '3 Mutton Lane, Cork, T12 RV07, Ireland',
   },
   {
     name: 'The Castle Inn',
     start: '2026-08-21T21:30:00',
     end: '2026-08-21T22:30:00',
     timeLabel: '9:30 – 10:30 PM',
+    address: '99 South Main Street, Cork, T12 XD6D, Ireland',
   },
   {
     name: 'The Oval',
     start: '2026-08-21T22:30:00',
     end: '2026-08-21T23:59:00',
     timeLabel: '10:30 PM – late',
+    address: '25 South Main Street, Cork, T12 Y15D, Ireland',
   },
 ];
 ---
@@ -53,7 +64,7 @@ const stops: Stop[] = [
     <title>Last Day at Qualcomm — Pub Crawl</title>
     <meta
       name="description"
-      content="Emilio & Jeremy Barghorn's last day at Qualcomm — tonight's pub crawl, 21 August 2026."
+      content="Emilio & Jérémy's last day at Qualcomm — tonight's pub crawl, 21 August 2026."
     />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
@@ -64,8 +75,8 @@ const stops: Stop[] = [
         <p class="crawl-eyebrow">🍺 Last day at Qualcomm</p>
         <h1>One Last Round</h1>
         <p class="crawl-subtitle">
-          Emilio &amp; Jeremy Barghorn are wrapping up at Qualcomm — tonight's pub crawl sends them
-          off. Cork, 21 August 2026.
+          Emilio &amp; Jérémy are wrapping up at Qualcomm — tonight's pub crawl sends them off.
+          Cork, 21 August 2026.
         </p>
       </header>
 
@@ -91,14 +102,24 @@ const stops: Stop[] = [
                   <h2>{stop.name}</h2>
                   <span class="crawl-stop-time">{stop.timeLabel}</span>
                 </div>
-                <p class="crawl-stop-badge" data-role="badge">
-                  Upcoming
-                </p>
+                <div class="crawl-stop-meta">
+                  <p class="crawl-stop-badge" data-role="badge">
+                    Upcoming
+                  </p>
+                  <a
+                    class="crawl-stop-directions"
+                    href={mapsUrl(stop)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Get directions to ${stop.name}`}
+                  >
+                    📍 Directions
+                  </a>
+                </div>
+                <div class="crawl-stop-progress-track">
+                  <div class="crawl-stop-progress-fill" data-role="stop-progress" />
+                </div>
               </div>
-              <label class="crawl-stop-check">
-                <input type="checkbox" data-role="visited" />
-                <span>Visited</span>
-              </label>
             </li>
           ))
         }
@@ -115,7 +136,6 @@ const stops: Stop[] = [
       const statusEl = document.getElementById('crawl-status');
       const progressTrack = document.getElementById('progress-track');
       const progressFill = document.getElementById('progress-fill');
-      const STORAGE_KEY = 'pubcrawl-visited-2026-08-21';
 
       function formatCountdown(ms) {
         const totalSeconds = Math.max(0, Math.floor(ms / 1000));
@@ -139,6 +159,7 @@ const stops: Stop[] = [
 
         stopEls.forEach((el, i) => {
           const badge = el.querySelector('[data-role="badge"]');
+          const stopProgressFill = el.querySelector('[data-role="stop-progress"]');
           const stopStart = new Date(stops[i].start);
           const stopEnd = new Date(stops[i].end);
           el.classList.remove('is-current', 'is-past', 'is-upcoming');
@@ -146,13 +167,17 @@ const stops: Stop[] = [
           if (now >= stopEnd) {
             el.classList.add('is-past');
             badge.textContent = 'Done ✅';
+            stopProgressFill.style.width = '100%';
           } else if (i === currentIndex) {
             el.classList.add('is-current');
             badge.textContent = '🍻 Here now';
+            const stopPct = ((now - stopStart) / (stopEnd - stopStart)) * 100;
+            stopProgressFill.style.width = `${Math.min(100, Math.max(0, stopPct))}%`;
           } else {
             el.classList.add('is-upcoming');
             badge.textContent =
               stopStart > now ? `Starts in ${formatCountdown(stopStart - now)}` : 'Up next';
+            stopProgressFill.style.width = '0%';
           }
         });
 
@@ -174,20 +199,6 @@ const stops: Stop[] = [
 
       render();
       setInterval(render, 1000);
-
-      const visited = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
-      stopEls.forEach((el, i) => {
-        const checkbox = el.querySelector('[data-role="visited"]');
-        const name = stops[i].name;
-        checkbox.checked = visited.has(name);
-        el.classList.toggle('is-visited', checkbox.checked);
-        checkbox.addEventListener('change', () => {
-          if (checkbox.checked) visited.add(name);
-          else visited.delete(name);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(visited)));
-          el.classList.toggle('is-visited', checkbox.checked);
-        });
-      });
     </script>
   </body>
 </html>
