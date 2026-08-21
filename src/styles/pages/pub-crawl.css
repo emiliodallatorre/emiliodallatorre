@@ -1,0 +1,213 @@
+.crawl {
+  --crawl-bg: #171008;
+  --crawl-bg-panel: #23160a;
+  --crawl-amber: #f2a13c;
+  --crawl-amber-bright: #ffc267;
+  --crawl-cream: #f6e9d8;
+  --crawl-muted: #b9a58c;
+  --crawl-line: #3a2716;
+  --crawl-current: #6b3f1d;
+
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 3rem 1.5rem 4rem;
+  background: var(--crawl-bg);
+  color: var(--crawl-cream);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #171008;
+  background: var(--crawl-bg, #171008);
+}
+
+.crawl * {
+  box-sizing: border-box;
+}
+
+.crawl-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.crawl-eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--crawl-amber);
+}
+
+.crawl-hero h1 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  line-height: 1.1;
+  color: var(--crawl-amber-bright);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.crawl-subtitle {
+  margin: 0;
+  color: var(--crawl-muted);
+  font-size: 1rem;
+}
+
+.crawl-status {
+  min-height: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.crawl-status-line {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.crawl-progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--crawl-line);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.crawl-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--crawl-amber), var(--crawl-amber-bright));
+  transition: width 1s linear;
+}
+
+.crawl-stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.crawl-stop {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--crawl-line);
+  border-radius: 14px;
+  background: var(--crawl-bg-panel);
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+
+.crawl-stop.is-current {
+  background: var(--crawl-current);
+  border-color: var(--crawl-amber);
+  box-shadow: 0 0 0 1px var(--crawl-amber) inset;
+}
+
+.crawl-stop.is-past {
+  opacity: 0.55;
+}
+
+.crawl-stop-marker {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--crawl-line);
+  color: var(--crawl-cream);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.crawl-stop.is-current .crawl-stop-marker {
+  background: var(--crawl-amber);
+  color: #201203;
+}
+
+.crawl-stop-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.crawl-stop-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.crawl-stop-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--crawl-cream);
+}
+
+.crawl-stop-time {
+  font-size: 0.85rem;
+  color: var(--crawl-muted);
+  white-space: nowrap;
+}
+
+.crawl-stop-badge {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: var(--crawl-amber);
+}
+
+.crawl-stop.is-past .crawl-stop-badge {
+  color: var(--crawl-muted);
+}
+
+.crawl-stop-check {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  color: var(--crawl-muted);
+  cursor: pointer;
+}
+
+.crawl-stop-check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--crawl-amber);
+  cursor: pointer;
+}
+
+.crawl-stop.is-visited {
+  border-color: var(--crawl-amber);
+}
+
+.crawl-footnote {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--crawl-muted);
+}
+
+.crawl-footnote a {
+  color: var(--crawl-amber);
+  text-decoration: none;
+}
+
+.crawl-footnote a:hover {
+  text-decoration: underline;
+}

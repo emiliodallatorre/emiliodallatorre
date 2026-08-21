@@ -1,0 +1,192 @@
+---
+import '../styles/pages/pub-crawl.css';
+import { withBase } from '../utils/paths';
+
+interface Stop {
+  name: string;
+  /** Local datetime (no timezone) — interpreted in the crawlers' own local time. */
+  start: string;
+  end: string;
+  timeLabel: string;
+}
+
+// Draft order/times — this list will evolve during the night, edit freely.
+const stops: Stop[] = [
+  {
+    name: 'El Fenix',
+    start: '2026-08-21T18:30:00',
+    end: '2026-08-21T19:30:00',
+    timeLabel: '6:30 – 7:30 PM',
+  },
+  {
+    name: 'The Poor Relation',
+    start: '2026-08-21T19:30:00',
+    end: '2026-08-21T20:30:00',
+    timeLabel: '7:30 – 8:30 PM',
+  },
+  {
+    name: 'Mutton Lane',
+    start: '2026-08-21T20:30:00',
+    end: '2026-08-21T21:30:00',
+    timeLabel: '8:30 – 9:30 PM',
+  },
+  {
+    name: 'The Castle Inn',
+    start: '2026-08-21T21:30:00',
+    end: '2026-08-21T22:30:00',
+    timeLabel: '9:30 – 10:30 PM',
+  },
+  {
+    name: 'The Oval',
+    start: '2026-08-21T22:30:00',
+    end: '2026-08-21T23:59:00',
+    timeLabel: '10:30 PM – late',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Last Call at Qualcomm — Pub Crawl</title>
+    <meta
+      name="description"
+      content="Emilio & Jeremy Barghorn's last-day-at-Qualcomm pub crawl, 21 August 2026."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+  </head>
+  <body>
+    <main class="crawl">
+      <header class="crawl-hero">
+        <p class="crawl-eyebrow">🍺 Farewell tour</p>
+        <h1>Last Call at Qualcomm</h1>
+        <p class="crawl-subtitle">
+          Emilio &amp; Jeremy Barghorn's last night before Qualcomm — Cork, 21 August 2026.
+        </p>
+      </header>
+
+      <section class="crawl-status" id="crawl-status" aria-live="polite">
+        <noscript>
+          <p class="crawl-status-line">Turn on JavaScript to see live crawl status.</p>
+        </noscript>
+      </section>
+
+      <div class="crawl-progress-track" id="progress-track" hidden>
+        <div class="crawl-progress-fill" id="progress-fill"></div>
+      </div>
+
+      <ol class="crawl-stops" id="crawl-stops">
+        {
+          stops.map((stop, i) => (
+            <li class="crawl-stop" data-index={i}>
+              <div class="crawl-stop-marker" aria-hidden="true">
+                {i + 1}
+              </div>
+              <div class="crawl-stop-body">
+                <div class="crawl-stop-head">
+                  <h2>{stop.name}</h2>
+                  <span class="crawl-stop-time">{stop.timeLabel}</span>
+                </div>
+                <p class="crawl-stop-badge" data-role="badge">
+                  Upcoming
+                </p>
+              </div>
+              <label class="crawl-stop-check">
+                <input type="checkbox" data-role="visited" />
+                <span>Visited</span>
+              </label>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p class="crawl-footnote">
+        Order and times are a first draft — expect this to shift mid-crawl.
+        <a href={withBase('/')}>← Back to the actual portfolio</a>
+      </p>
+    </main>
+
+    <script is:inline define:vars={{ stops }}>
+      const stopEls = Array.from(document.querySelectorAll('.crawl-stop'));
+      const statusEl = document.getElementById('crawl-status');
+      const progressTrack = document.getElementById('progress-track');
+      const progressFill = document.getElementById('progress-fill');
+      const STORAGE_KEY = 'pubcrawl-visited-2026-08-21';
+
+      function formatCountdown(ms) {
+        const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        if (h > 0) return `${h}h ${m}m`;
+        if (m > 0) return `${m}m ${s}s`;
+        return `${s}s`;
+      }
+
+      function render() {
+        const now = new Date();
+        const start = new Date(stops[0].start);
+        const end = new Date(stops[stops.length - 1].end);
+
+        let currentIndex = -1;
+        stops.forEach((s, i) => {
+          if (now >= new Date(s.start) && now < new Date(s.end)) currentIndex = i;
+        });
+
+        stopEls.forEach((el, i) => {
+          const badge = el.querySelector('[data-role="badge"]');
+          const stopStart = new Date(stops[i].start);
+          const stopEnd = new Date(stops[i].end);
+          el.classList.remove('is-current', 'is-past', 'is-upcoming');
+
+          if (now >= stopEnd) {
+            el.classList.add('is-past');
+            badge.textContent = 'Done ✅';
+          } else if (i === currentIndex) {
+            el.classList.add('is-current');
+            badge.textContent = '🍻 Here now';
+          } else {
+            el.classList.add('is-upcoming');
+            badge.textContent =
+              stopStart > now ? `Starts in ${formatCountdown(stopStart - now)}` : 'Up next';
+          }
+        });
+
+        if (now < start) {
+          progressTrack.hidden = true;
+          statusEl.innerHTML = `<p class="crawl-status-line">🕒 Kickoff in <strong>${formatCountdown(start - now)}</strong> — first stop: <strong>${stops[0].name}</strong>.</p>`;
+        } else if (now <= end) {
+          progressTrack.hidden = false;
+          const pct = Math.min(100, Math.max(0, ((now - start) / (end - start)) * 100));
+          progressFill.style.width = `${pct}%`;
+          const label = currentIndex >= 0 ? stops[currentIndex].name : 'in transit';
+          statusEl.innerHTML = `<p class="crawl-status-line">🍺 Crawl is live — currently at <strong>${label}</strong>.</p>`;
+        } else {
+          progressTrack.hidden = false;
+          progressFill.style.width = '100%';
+          statusEl.innerHTML = `<p class="crawl-status-line">🎉 That's a wrap. Hope Qualcomm survives without you two.</p>`;
+        }
+      }
+
+      render();
+      setInterval(render, 1000);
+
+      const visited = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+      stopEls.forEach((el, i) => {
+        const checkbox = el.querySelector('[data-role="visited"]');
+        const name = stops[i].name;
+        checkbox.checked = visited.has(name);
+        el.classList.toggle('is-visited', checkbox.checked);
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) visited.add(name);
+          else visited.delete(name);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(visited)));
+          el.classList.toggle('is-visited', checkbox.checked);
+        });
+      });
+    </script>
+  </body>
+</html>
