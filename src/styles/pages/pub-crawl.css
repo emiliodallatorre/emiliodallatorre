@@ -4,6 +4,7 @@
   --crawl-bg-panel: #f7fbfd;
   --crawl-text: rgba(0, 0, 0, 1);
   --crawl-muted: rgba(24, 31, 36, 0.62);
+  --crawl-muted-bright: rgba(24, 31, 36, 0.82);
   --crawl-line: rgba(60, 60, 67, 0.29);
   --crawl-accent: #197ca8;
   --crawl-warning: #ff9500;
@@ -36,6 +37,7 @@
     --crawl-bg-panel: #101416;
     --crawl-text: rgba(255, 255, 255, 1);
     --crawl-muted: rgba(239, 247, 250, 0.56);
+    --crawl-muted-bright: rgba(239, 247, 250, 0.82);
     --crawl-line: rgba(84, 84, 88, 0.65);
     --crawl-accent: #74c7dc;
     --crawl-warning: #ff9f0a;
@@ -270,7 +272,7 @@ body {
   margin-top: 2rem;
   text-align: center;
   font-size: 0.8rem;
-  color: var(--crawl-muted);
+  color: var(--crawl-muted-bright);
 }
 
 .crawl-subtitle a {
