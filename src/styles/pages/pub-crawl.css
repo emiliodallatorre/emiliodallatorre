@@ -1,19 +1,23 @@
 .crawl {
-  --crawl-bg: #171008;
-  --crawl-bg-panel: #23160a;
-  --crawl-amber: #f2a13c;
-  --crawl-amber-bright: #ffc267;
-  --crawl-cream: #f6e9d8;
-  --crawl-muted: #b9a58c;
-  --crawl-line: #3a2716;
-  --crawl-current: #6b3f1d;
+  /* Light palette — mirrors the portfolio's tokens.css defaults. */
+  --crawl-bg: #ffffff;
+  --crawl-bg-panel: #f7fbfd;
+  --crawl-text: rgba(0, 0, 0, 1);
+  --crawl-muted: rgba(24, 31, 36, 0.62);
+  --crawl-line: rgba(60, 60, 67, 0.29);
+  --crawl-accent: #197ca8;
+  --crawl-warning: #ff9500;
+  --crawl-success: #34c759;
+  --crawl-current-bg: rgba(25, 124, 168, 0.12);
+  --crawl-current-line: rgba(25, 124, 168, 0.45);
 
   min-height: 100vh;
   margin: 0 auto;
   max-width: 640px;
-  padding: 3rem 1.5rem 4rem;
+  padding: max(2.5rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) 3rem
+    max(1.25rem, env(safe-area-inset-left));
   background: var(--crawl-bg);
-  color: var(--crawl-cream);
+  color: var(--crawl-text);
   font-family:
     ui-sans-serif,
     system-ui,
@@ -26,10 +30,24 @@
   box-sizing: border-box;
 }
 
+@media (prefers-color-scheme: dark) {
+  .crawl {
+    --crawl-bg: #000000;
+    --crawl-bg-panel: #101416;
+    --crawl-text: rgba(255, 255, 255, 1);
+    --crawl-muted: rgba(239, 247, 250, 0.56);
+    --crawl-line: rgba(84, 84, 88, 0.65);
+    --crawl-accent: #74c7dc;
+    --crawl-warning: #ff9f0a;
+    --crawl-success: #30d158;
+    --crawl-current-bg: rgba(116, 199, 220, 0.16);
+    --crawl-current-line: rgba(116, 199, 220, 0.5);
+  }
+}
+
 body {
   margin: 0;
-  background: #171008;
-  background: var(--crawl-bg, #171008);
+  background: var(--crawl-bg, #ffffff);
 }
 
 .crawl * {
@@ -38,29 +56,33 @@ body {
 
 .crawl-hero {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .crawl-eyebrow {
   margin: 0 0 0.5rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--crawl-amber);
+  color: var(--crawl-warning);
 }
 
 .crawl-hero h1 {
   margin: 0 0 0.6rem;
-  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-size: clamp(1.9rem, 8vw, 2.75rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
   line-height: 1.1;
-  color: var(--crawl-amber-bright);
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+  color: var(--crawl-text);
 }
 
 .crawl-subtitle {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 30rem;
   color: var(--crawl-muted);
-  font-size: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .crawl-status {
@@ -71,7 +93,8 @@ body {
 
 .crawl-status-line {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .crawl-progress-track {
@@ -79,13 +102,13 @@ body {
   border-radius: 999px;
   background: var(--crawl-line);
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 .crawl-progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--crawl-amber), var(--crawl-amber-bright));
+  background: linear-gradient(90deg, var(--crawl-warning), var(--crawl-accent));
   transition: width 1s linear;
 }
 
@@ -95,14 +118,14 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .crawl-stop {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  padding: 0.9rem 1rem;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
   border: 1px solid var(--crawl-line);
   border-radius: 14px;
   background: var(--crawl-bg-panel);
@@ -112,9 +135,8 @@ body {
 }
 
 .crawl-stop.is-current {
-  background: var(--crawl-current);
-  border-color: var(--crawl-amber);
-  box-shadow: 0 0 0 1px var(--crawl-amber) inset;
+  background: var(--crawl-current-bg);
+  border-color: var(--crawl-current-line);
 }
 
 .crawl-stop.is-past {
@@ -123,20 +145,20 @@ body {
 
 .crawl-stop-marker {
   flex: 0 0 auto;
-  width: 2rem;
-  height: 2rem;
+  width: 1.85rem;
+  height: 1.85rem;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: var(--crawl-line);
-  color: var(--crawl-cream);
+  color: var(--crawl-text);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .crawl-stop.is-current .crawl-stop-marker {
-  background: var(--crawl-amber);
-  color: #201203;
+  background: var(--crawl-warning);
+  color: #211200;
 }
 
 .crawl-stop-body {
@@ -148,30 +170,36 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
 }
 
 .crawl-stop-head h2 {
   margin: 0;
-  font-size: 1.1rem;
-  color: var(--crawl-cream);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--crawl-text);
 }
 
 .crawl-stop-time {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--crawl-muted);
   white-space: nowrap;
 }
 
 .crawl-stop-badge {
-  margin: 0.2rem 0 0;
-  font-size: 0.85rem;
-  color: var(--crawl-amber);
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--crawl-accent);
 }
 
 .crawl-stop.is-past .crawl-stop-badge {
-  color: var(--crawl-muted);
+  color: var(--crawl-success);
+}
+
+.crawl-stop.is-current .crawl-stop-badge {
+  color: var(--crawl-warning);
+  font-weight: 600;
 }
 
 .crawl-stop-check {
@@ -179,35 +207,54 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.7rem;
+  justify-content: center;
+  gap: 0.2rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  font-size: 0.65rem;
   color: var(--crawl-muted);
   cursor: pointer;
 }
 
 .crawl-stop-check input {
-  width: 1.1rem;
-  height: 1.1rem;
-  accent-color: var(--crawl-amber);
+  width: 1.3rem;
+  height: 1.3rem;
+  accent-color: var(--crawl-success);
   cursor: pointer;
 }
 
 .crawl-stop.is-visited {
-  border-color: var(--crawl-amber);
+  border-color: var(--crawl-success);
 }
 
 .crawl-footnote {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--crawl-muted);
 }
 
 .crawl-footnote a {
-  color: var(--crawl-amber);
+  color: var(--crawl-accent);
   text-decoration: none;
 }
 
 .crawl-footnote a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 380px) {
+  .crawl {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .crawl-stop {
+    padding: 0.65rem 0.7rem;
+    gap: 0.6rem;
+  }
+
+  .crawl-stop-head h2 {
+    font-size: 0.95rem;
+  }
 }
