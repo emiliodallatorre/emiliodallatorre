@@ -1,0 +1,267 @@
+---
+import '../styles/pages/pub-crawl.css';
+import { withBase } from '../utils/paths';
+
+interface Stop {
+  name: string;
+  /** Local datetime (no timezone) — interpreted in the crawlers' own local time. */
+  start: string;
+  end: string;
+  timeLabel: string;
+  address: string;
+  /** Overrides the generated maps query when a verified link is known. */
+  mapsUrl?: string;
+}
+
+function mapsUrl(stop: Pick<Stop, 'name' | 'address' | 'mapsUrl'>) {
+  if (stop.mapsUrl) return stop.mapsUrl;
+  const query = `${stop.name}, ${stop.address}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+// Draft order/times — this list will evolve during the night, edit freely.
+const stops: Stop[] = [
+  {
+    name: 'El Fenix',
+    start: '2026-08-21T21:15:00',
+    end: '2026-08-21T22:15:00',
+    timeLabel: '9:15 – 10:15 PM',
+    address: '3 Union Quay, Cork, T12 XF24, Ireland',
+  },
+  {
+    name: 'The Poor Relation',
+    start: '2026-08-21T22:15:00',
+    end: '2026-08-21T23:00:00',
+    timeLabel: '10:15 – 11:00 PM',
+    address: '19 Parnell Place, Cork, Ireland',
+  },
+  {
+    name: 'Mutton Lane',
+    start: '2026-08-21T23:00:00',
+    end: '2026-08-21T23:45:00',
+    timeLabel: '11:00 – 11:45 PM',
+    address: '3 Mutton Lane, Cork, T12 RV07, Ireland',
+  },
+  {
+    name: 'The Castle Inn',
+    start: '2026-08-21T23:45:00',
+    end: '2026-08-22T00:30:00',
+    timeLabel: '11:45 PM – 12:30 AM',
+    address: '99 South Main Street, Cork, T12 XD6D, Ireland',
+  },
+  {
+    name: 'The Oval',
+    start: '2026-08-22T00:30:00',
+    end: '2026-08-22T01:15:00',
+    timeLabel: '12:30 – 1:15 AM',
+    address: '25 South Main Street, Cork, T12 Y15D, Ireland',
+  },
+  {
+    name: 'Crane Lane',
+    start: '2026-08-22T01:15:00',
+    end: '2026-08-22T03:15:00',
+    timeLabel: '1:15 AM – crash 🛌',
+    address: 'Phoenix Street, Cork, T12 A218, Ireland',
+    mapsUrl: 'https://maps.app.goo.gl/13e9ozAyBzrWpCru9',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>Last Day at Qualcomm — Pub Crawl</title>
+    <meta
+      name="description"
+      content="Emilio & Jérémy's last day at Qualcomm — tonight's pub crawl, 21 August 2026."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+  </head>
+  <body>
+    <main class="crawl">
+      <header class="crawl-hero">
+        <p class="crawl-eyebrow">🍺 Last day at Qualcomm</p>
+        <h1>One Last Round</h1>
+        <p class="crawl-subtitle">
+          <a href="https://instagram.com/emiliodallatorre" target="_blank" rel="noopener noreferrer"
+            >Emilio</a
+          >
+          &amp;
+          <a href="https://instagram.com/jerem_bgn" target="_blank" rel="noopener noreferrer"
+            >Jérémy</a
+          >
+          are wrapping up at Qualcomm — tonight's pub crawl sends them off. Everyone's welcome to
+          join in at any stop, any time — no invite needed.
+          <br />
+
+          <b>
+          Cork, 21 August 2026.
+          </b>
+        </p>
+      </header>
+
+      <section class="crawl-rules">
+        <p class="crawl-rules-title">📋 The Rule(s)</p>
+        <p class="crawl-rules-text">One pint (or more) per pub.</p>
+        <p class="crawl-rules-text">Jump in whenever, wherever — everyone's invited to join the crawl anytime.</p>
+      </section>
+
+      <p class="crawl-sim-banner" id="sim-banner" hidden></p>
+
+      <section class="crawl-status" id="crawl-status" aria-live="polite">
+        <noscript>
+          <p class="crawl-status-line">Turn on JavaScript to see live crawl status.</p>
+        </noscript>
+      </section>
+
+      <div class="crawl-progress-track" id="progress-track" hidden>
+        <div class="crawl-progress-fill" id="progress-fill"></div>
+      </div>
+
+      <ol class="crawl-stops" id="crawl-stops">
+        {
+          stops.map((stop, i) => (
+            <li class="crawl-stop" data-index={i}>
+              <div class="crawl-stop-marker" aria-hidden="true">
+                {i + 1}
+              </div>
+              <div class="crawl-stop-body">
+                <div class="crawl-stop-head">
+                  <h2>{stop.name}</h2>
+                  <span class="crawl-stop-time">{stop.timeLabel}</span>
+                </div>
+                <div class="crawl-stop-meta">
+                  <p class="crawl-stop-badge" data-role="badge">
+                    Upcoming
+                  </p>
+                  <a
+                    class="crawl-stop-directions"
+                    href={mapsUrl(stop)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Get directions to ${stop.name}`}
+                  >
+                    📍 Directions
+                  </a>
+                </div>
+                <div class="crawl-stop-progress-track">
+                  <div class="crawl-stop-progress-fill" data-role="stop-progress" />
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p class="crawl-footnote">
+        Tonight's pub crawl, Venetian style: a <em>bacaro tour</em>. Skip dinner. Hop bar to bar for
+        cicchetti (little bites) and an ombra (small glass of wine) at each stop instead.
+        <br />
+        Want to talk to Emilio after his 5th pint? Here's
+        <a
+          href="https://italysegreta.com/how-to-speak-veneziano/"
+          target="_blank"
+          rel="noopener noreferrer">how to speak Veneziano</a
+        >.
+        <br />
+        <br />
+        <a href={withBase('/')}>← Back to the actual portfolio</a>
+      </p>
+
+      <a class="crawl-fab" href="tel:+353874577384">📞 Call if lost</a>
+    </main>
+    <script is:inline define:vars={{ stops }}>
+      const stopEls = Array.from(document.querySelectorAll('.crawl-stop'));
+      const statusEl = document.getElementById('crawl-status');
+      const progressTrack = document.getElementById('progress-track');
+      const progressFill = document.getElementById('progress-fill');
+      const simBanner = document.getElementById('sim-banner');
+
+      // Preview any moment by visiting this page with ?at=2026-08-21T21:00 —
+      // the clock then runs forward in real time from that point.
+      let simOffsetMs = 0;
+      const atParam = new URLSearchParams(location.search).get('at');
+      if (atParam) {
+        const simulated = new Date(atParam);
+        if (!Number.isNaN(simulated.getTime())) {
+          simOffsetMs = simulated.getTime() - Date.now();
+          simBanner.hidden = false;
+          simBanner.textContent = `⏱ Simulating ${simulated.toLocaleString('en-IE', {
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+          })} onward — drop ?at= from the URL to see the real time.`;
+        }
+      }
+      function getNow() {
+        return new Date(Date.now() + simOffsetMs);
+      }
+
+      function formatCountdown(ms) {
+        const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        if (h > 0) return `${h}h ${m}m`;
+        if (m > 0) return `${m}m ${s}s`;
+        return `${s}s`;
+      }
+
+      function render() {
+        const now = getNow();
+        const start = new Date(stops[0].start);
+        const end = new Date(stops[stops.length - 1].end);
+
+        let currentIndex = -1;
+        stops.forEach((s, i) => {
+          if (now >= new Date(s.start) && now < new Date(s.end)) currentIndex = i;
+        });
+
+        stopEls.forEach((el, i) => {
+          const badge = el.querySelector('[data-role="badge"]');
+          const stopProgressFill = el.querySelector('[data-role="stop-progress"]');
+          const stopStart = new Date(stops[i].start);
+          const stopEnd = new Date(stops[i].end);
+          el.classList.remove('is-current', 'is-past', 'is-upcoming');
+
+          if (now >= stopEnd) {
+            el.classList.add('is-past');
+            badge.textContent = 'Done ✅';
+            stopProgressFill.style.width = '100%';
+          } else if (i === currentIndex) {
+            el.classList.add('is-current');
+            badge.textContent = '🍻 Here now';
+            const stopPct = ((now - stopStart) / (stopEnd - stopStart)) * 100;
+            stopProgressFill.style.width = `${Math.min(100, Math.max(0, stopPct))}%`;
+          } else {
+            el.classList.add('is-upcoming');
+            badge.textContent =
+              stopStart > now ? `Starts in ${formatCountdown(stopStart - now)}` : 'Up next';
+            stopProgressFill.style.width = '0%';
+          }
+        });
+
+        if (now < start) {
+          progressTrack.hidden = true;
+          statusEl.innerHTML = `<p class="crawl-status-line">🕒 Kickoff in <strong>${formatCountdown(start - now)}</strong> — first stop: <strong>${stops[0].name}</strong>.</p>`;
+        } else if (now <= end) {
+          progressTrack.hidden = false;
+          const pct = Math.min(100, Math.max(0, ((now - start) / (end - start)) * 100));
+          progressFill.style.width = `${pct}%`;
+          const label = currentIndex >= 0 ? stops[currentIndex].name : 'in transit';
+          statusEl.innerHTML = `<p class="crawl-status-line">🍺 Crawl is live — currently at <strong>${label}</strong>.</p>`;
+        } else {
+          progressTrack.hidden = false;
+          progressFill.style.width = '100%';
+          statusEl.innerHTML = `<p class="crawl-status-line">🎉 That's a wrap. Hope Qualcomm survives without you two.</p>`;
+        }
+      }
+
+      render();
+      setInterval(render, 1000);
+    </script>
+  </body>
+</html>
