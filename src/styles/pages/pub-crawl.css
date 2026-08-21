@@ -1,4 +1,4 @@
-.crawl {
+:root {
   /* Light palette — mirrors the portfolio's tokens.css defaults. */
   --crawl-bg: #ffffff;
   --crawl-bg-panel: #f7fbfd;
@@ -11,7 +11,9 @@
   --crawl-success: #34c759;
   --crawl-current-bg: rgba(25, 124, 168, 0.12);
   --crawl-current-line: rgba(25, 124, 168, 0.45);
+}
 
+.crawl {
   min-height: 100vh;
   margin: 0 auto;
   max-width: 640px;
@@ -32,7 +34,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .crawl {
+  :root {
     --crawl-bg: #000000;
     --crawl-bg-panel: #101416;
     --crawl-text: rgba(255, 255, 255, 1);
@@ -49,7 +51,7 @@
 
 body {
   margin: 0;
-  background: var(--crawl-bg, #ffffff);
+  background: var(--crawl-bg);
 }
 
 .crawl * {
