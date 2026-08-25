@@ -4,6 +4,7 @@ description: "I've joined Qualcomm's Cork division as a Machine Learning Researc
 pubDate: '2026-03-22'
 heroImage: '../../assets/posts/starting-a-new-chapter-in-machine-learning-rd-at-qualcomm.jpg'
 category: 'Career'
+homeOrder: 1
 ---
 
 I've joined [Qualcomm](https://www.qualcomm.com/)'s Cork division as a Generic Sistem-on-Chip Machine Learning Research & Development Engineer for the next six months.

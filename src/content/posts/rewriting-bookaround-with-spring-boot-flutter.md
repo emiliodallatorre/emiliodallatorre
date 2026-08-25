@@ -4,7 +4,6 @@ description: "I'm planning a complete rewrite of my non-profit school book excha
 pubDate: '2025-10-07'
 heroImage: '../../assets/posts/rewriting-bookaround-with-spring-boot-flutter.jpg'
 category: 'Projects'
-homeOrder: 3
 ---
 
 After recently resigning from [PwC](https://www.pwc.com/gx/en.html) to pursue my Master's degree in HPC Engineering at Politecnico di Milano, I'm excited to return to a passion project close to my heart: [Bookaround](https://bookaround.app).
