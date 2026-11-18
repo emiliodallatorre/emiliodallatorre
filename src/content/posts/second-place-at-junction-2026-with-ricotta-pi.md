@@ -2,6 +2,7 @@
 title: 'Second place at Junction 2026 with Ricotta Pi'
 description: 'Our team won second place in the Intel Physical AI Challenge with a robot that inspects and sorts LEGO DUPLO bricks.'
 pubDate: '2026-11-17'
+heroImage: '../../assets/posts/second-place-at-junction-2026-winners.jpeg'
 category: 'Projects'
 ---
 
